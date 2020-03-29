@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             BackgroundColor="#517D96"
+             
+             x:Class="ECMR.Views.MainPage">
+
+    <StackLayout >
+        <Label FontSize="Large"  Text="Αίτημα κατ' Εξαίρεση Μετακίνησης Πολιτών " HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="Black" VerticalOptions="CenterAndExpand" />
+        <Entry   Text="{Binding FullName , Mode=TwoWay}" Placeholder="Ονοματεπώνυμο"></Entry>
+        <Entry   Text="{Binding Address,Mode=TwoWay}" Placeholder="Διεύθυνση κατοικίας"></Entry>
+        <Entry Keyboard="Numeric"  Text="{Binding ServiceNumber,Mode=TwoWay}" Placeholder="Αριθμός αποστολής"></Entry>
+
+        <ListView 
+            x:Name="CategoryListView" 
+            ItemSelected="CategoryListView_OnItemSelected"
+            HasUnevenRows="True"
+            SeparatorVisibility="None"
+            BackgroundColor="Transparent">
+            <ListView.ItemTemplate>
+                <DataTemplate >
+                    <ViewCell  >
+                        <Frame CornerRadius="25" BackgroundColor="#F49BA1"  HasShadow="True" Margin="10">
+                            <Grid HorizontalOptions="CenterAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout Grid.Column="0" Orientation="Vertical">
+                                    <Label TextColor="Black" VerticalTextAlignment="Start" HorizontalTextAlignment="Start"    Text="{Binding Title}" ></Label>
+                                    <Image Source="{Binding ImageSource}"  ></Image>
+                                </StackLayout>
+                                <Label Grid.Column="1" TextColor="Black" VerticalTextAlignment="Center"  Text="{Binding Detail}"></Label>
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
